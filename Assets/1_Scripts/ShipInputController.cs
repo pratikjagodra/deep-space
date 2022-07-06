@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class ShipInputController : MonoBehaviour
 {
-
     private int fingerId;
     private int touchIndex;
     private Vector2 startPos;

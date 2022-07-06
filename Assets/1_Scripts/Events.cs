@@ -8,4 +8,6 @@ public static class Events
     public static Func<Vector2> getTouchCurPos;
     public static Func<Vector2> getTouchDeltaPos;
     public static Func<Vector2> getTouchDirection;
+
+    public static Action<ShakeMode> onCameraShake;
 }
