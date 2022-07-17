@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    [SerializeField] Joystick joystick;
     [SerializeField] float turnSpeed = 10f;
     [SerializeField] float moveSpeed = 10f;
     private Rigidbody rb;
@@ -19,7 +20,7 @@ public class ShipController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        touchDir = (Vector2)(Events.getTouchDirection?.Invoke());
+        touchDir = joystick.UnitRawDirection();
 
         rotateDir.x = -touchDir.y;
         rotateDir.y = touchDir.x;
@@ -31,5 +32,6 @@ public class ShipController : MonoBehaviour
 
         moveDir = (rb.rotation * Vector3.forward);
         rb.MovePosition(rb.position + moveDir * moveSpeed * Time.fixedDeltaTime);
+        // rb.AddForce(moveDir * moveSpeed * Time.fixedDeltaTime, ForceMode.Force);
     }
 }

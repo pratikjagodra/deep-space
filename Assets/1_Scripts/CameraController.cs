@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     Vector3 moveDir;
     Vector3 rotationDir;
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         transform.position = Vector3.Slerp(transform.position, ShipCamPos.position, followMoveSpeed * Time.deltaTime);
 

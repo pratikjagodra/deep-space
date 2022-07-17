@@ -3,7 +3,13 @@ guid: 7061960f807643b40b9f8f00cea19ff6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - camTransform: {instanceID: 0}
+  - minorShakeData: {fileID: 11400000, guid: 0817d7a34de18304aaf224d1675dcb78, type: 2}
+  - smallShakeData: {fileID: 11400000, guid: 377db66b6cfde7d4e9dbb276c8454b67, type: 2}
+  - mediumShakeData: {fileID: 11400000, guid: 3978e3968dfd547458fe3e558ef18958, type: 2}
+  - largeShakeData: {fileID: 11400000, guid: a55eeb02d88853c48bf37dbbae01f686, type: 2}
+  - extremeShakeData: {fileID: 11400000, guid: 42aa97816b770f447ac9fc6b6359b983, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
