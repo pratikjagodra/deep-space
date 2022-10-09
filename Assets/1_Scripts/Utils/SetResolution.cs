@@ -17,7 +17,7 @@ public class SetResolution : MonoBehaviour
             height = (int)resolution;
             width = (int)(height * aspectRatio);
 
-            Screen.SetResolution(width, height, FullScreenMode.ExclusiveFullScreen);
+            Screen.SetResolution(width, height, true);
         }
         else
         {
@@ -25,7 +25,7 @@ public class SetResolution : MonoBehaviour
             width = (int)resolution;
             height = (int)(width * aspectRatio);
 
-            Screen.SetResolution(width, height, FullScreenMode.ExclusiveFullScreen);
+            Screen.SetResolution(width, height, true);
         }
     }
 }

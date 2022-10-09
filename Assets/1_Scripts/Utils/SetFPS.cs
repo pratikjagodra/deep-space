@@ -8,12 +8,14 @@ public class SetFPS : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = (int)fPSNumber;
+        if(fPSNumber != FPSNumber._Auto)
+            Application.targetFrameRate = (int)fPSNumber;
     }
 }
 
 public enum FPSNumber
 {
+    _Auto,
     _24 = 24,
     _30 = 30,
     _60 = 60,

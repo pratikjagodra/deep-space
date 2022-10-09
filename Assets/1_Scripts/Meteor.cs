@@ -18,7 +18,7 @@ public class Meteor : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        transform.position = GetRandomPos();
+        transform.localPosition = GetRandomPos();
 
         randomForce = Vector3.back;
 
@@ -31,7 +31,7 @@ public class Meteor : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
 
         gameObject.SetActive(false);
     }
