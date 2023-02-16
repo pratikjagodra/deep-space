@@ -8,15 +8,8 @@ using Random = UnityEngine.Random;
 public class CameraShaker : MonoBehaviour
 {
     [SerializeField] private Transform camTransform;
-    [SerializeField] private ShakeMode curShakeMode;
-    [Header("Shake Data")]
-    [SerializeField] private SOShakeData minorShakeData;
-    [SerializeField] private SOShakeData smallShakeData;
-    [SerializeField] private SOShakeData mediumShakeData;
-    [SerializeField] private SOShakeData largeShakeData;
-    [SerializeField] private SOShakeData extremeShakeData;
 
-    private float shakeStrength;
+    private float shakeOffset;
     private float shakeSpeed;
     private float shakeDuration;
     private bool canShake = false;
@@ -29,16 +22,6 @@ public class CameraShaker : MonoBehaviour
 
     private Vector3 targetPos = Vector3.zero;
     private Vector3 newPos = Vector3.zero;
-
-    private void OnEnable()
-    {
-        Events.onCameraShake += ShakeCamera;
-    }
-
-    private void OnDisable()
-    {
-        Events.onCameraShake -= ShakeCamera;
-    }
 
     private void Start()
     {
@@ -53,7 +36,7 @@ public class CameraShaker : MonoBehaviour
             camTransform.localPosition = newPos;
 
             if (newPos == targetPos)
-                targetPos = GetShakeDirection() * shakeStrength;
+                targetPos = GetShakeDirection() * shakeOffset;
 
             shakeDuration -= Time.deltaTime;
 
@@ -73,11 +56,14 @@ public class CameraShaker : MonoBehaviour
         }
     }
 
-    private void ShakeCamera(ShakeMode shakeMode)
+    private void ShakeCamera(float _shakeOffset, float _shakeSpeed, float _shakeDuration)
     {
-        ConfigureShakeData(shakeMode);
 
-        targetPos = GetShakeDirection() * shakeStrength;
+        shakeOffset = _shakeOffset;
+        shakeSpeed = _shakeSpeed;
+        shakeDuration = _shakeDuration;
+
+        targetPos = GetShakeDirection() * shakeOffset;
         canShake = true;
         canReturnToNormal = false;
     }
@@ -86,9 +72,8 @@ public class CameraShaker : MonoBehaviour
     [ContextMenu("ShakeInfinitely")]
     private void ShakeInfinitely()
     {
-        ConfigureShakeData(curShakeMode);
         shakeDuration = Mathf.Infinity;
-        targetPos = GetShakeDirection() * shakeStrength;
+        targetPos = GetShakeDirection() * shakeOffset;
         canShake = true;
         canReturnToNormal = false;
     }
@@ -126,48 +111,5 @@ public class CameraShaker : MonoBehaviour
             dirIndex -= shakeDirNumber;
 
         return shakeDirections[dirIndex];
-    }
-
-    private void ConfigureShakeData(ShakeMode shakeMode)
-    {
-        curShakeMode = shakeMode;
-        switch (curShakeMode)
-        {
-            case ShakeMode.Minor:
-                shakeStrength = minorShakeData.shakeStrength;
-                shakeSpeed = minorShakeData.shakeSpeed;
-                shakeDuration = minorShakeData.shakeDuration;
-                break;
-
-            case ShakeMode.Small:
-                shakeStrength = smallShakeData.shakeStrength;
-                shakeSpeed = smallShakeData.shakeSpeed;
-                shakeDuration = smallShakeData.shakeDuration;
-                break;
-
-            case ShakeMode.Medium:
-                shakeStrength = mediumShakeData.shakeStrength;
-                shakeSpeed = mediumShakeData.shakeSpeed;
-                shakeDuration = mediumShakeData.shakeDuration;
-                break;
-
-            case ShakeMode.Large:
-                shakeStrength = largeShakeData.shakeStrength;
-                shakeSpeed = largeShakeData.shakeSpeed;
-                shakeDuration = largeShakeData.shakeDuration;
-                break;
-
-            case ShakeMode.Extreme:
-                shakeStrength = extremeShakeData.shakeStrength;
-                shakeSpeed = extremeShakeData.shakeSpeed;
-                shakeDuration = extremeShakeData.shakeDuration;
-                break;
-
-            default:
-                shakeStrength = 0;
-                shakeSpeed = 0;
-                shakeDuration = 0;
-                break;
-        }
     }
 }

@@ -9,13 +9,13 @@ public class OrbitalRing : MonoBehaviour
     [SerializeField] private float orbitHeight;
 
     [Header("")]
-    [SerializeField] private OrbitalMovement[] orbits;
+    [SerializeField] private Astroid[] astroids;
 
     private void Start()
     {
-        orbits = GetComponentsInChildren<OrbitalMovement>();
+        astroids = GetComponentsInChildren<Astroid>();
 
-        foreach (OrbitalMovement orbit in orbits)
+        foreach (Astroid orbit in astroids)
         {
             orbit.SetUp(orbitWidth, orbitHeight);
         }
@@ -23,7 +23,7 @@ public class OrbitalRing : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (OrbitalMovement orbit in orbits)
+        foreach (Astroid orbit in astroids)
         {
             orbit.AddOrbitalForce(orbitCenter, orbitRadius, orbitSpeed);
         }
