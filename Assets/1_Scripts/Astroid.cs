@@ -27,7 +27,7 @@ public class Astroid : MonoBehaviour
         moveDir = Vector3.Cross(centerDir, _orbitCenter.up);
         moveDirNormal = moveDir.normalized;
 
-        myRigidbody.velocity = moveDirNormal * _orbitSpeed;
+        myRigidbody.linearVelocity = moveDirNormal * _orbitSpeed;
 
         inForce = (centerDir.magnitude - _orbitRadius) * _orbitSpeed;
         myRigidbody.AddForce(inForce * Time.fixedDeltaTime * centerDirNormal, ForceMode.VelocityChange);
