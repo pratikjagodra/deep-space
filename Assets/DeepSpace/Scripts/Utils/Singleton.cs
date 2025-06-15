@@ -1,39 +1,42 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+namespace DeepSpace.Utils
 {
-    public static T Instance { get; private set; }
-
-    public virtual void Awake()
+    public class Singleton<T> : MonoBehaviour where T : Component
     {
-        if (Instance != null && Instance != this)
+        public static T Instance { get; private set; }
+
+        public virtual void Awake()
         {
-            Debug.Log("There is already a Singleton " + typeof(T) + "\nDestroying this");
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this as T;
+            if (Instance != null && Instance != this)
+            {
+                Debug.Log("There is already a Singleton " + typeof(T) + "\nDestroying this");
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this as T;
+            }
         }
     }
-}
 
 
-public class PersistentSingleton<T> : MonoBehaviour where T : Component
-{
-    public static T Instance { get; private set; }
-
-    public virtual void Awake()
+    public class PersistentSingleton<T> : MonoBehaviour where T : Component
     {
-        if (Instance != null && Instance != this)
+        public static T Instance { get; private set; }
+
+        public virtual void Awake()
         {
-            Debug.Log("There is already a Singleton " + typeof(T) + "\nDestroying this");
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this as T;
-            DontDestroyOnLoad(this);
+            if (Instance != null && Instance != this)
+            {
+                Debug.Log("There is already a Singleton " + typeof(T) + "\nDestroying this");
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this as T;
+                DontDestroyOnLoad(this);
+            }
         }
     }
 }

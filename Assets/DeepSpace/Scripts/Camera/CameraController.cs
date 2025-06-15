@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DeepSpace.Ship;
 
-public class CameraController : MonoBehaviour
+namespace DeepSpace.Camera
 {
-    [SerializeField] private Transform ShipCamPos;
-    [SerializeField] private float followMoveSpeed;
-    [SerializeField] private float followRotationSpeed;
-
-    Vector3 moveDir;
-    Vector3 rotationDir;
-
-    private void FixedUpdate()
+    public class CameraController : MonoBehaviour
     {
-        transform.position = Vector3.Slerp(transform.position, ShipCamPos.position, followMoveSpeed * Time.deltaTime);
+        [SerializeField] private CameraFollowData followData;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, ShipCamPos.rotation, followRotationSpeed * Time.deltaTime);
+        private void LateUpdate()
+        {
+            transform.position = Vector3.Lerp(transform.position, ShipCameraPoint.GetPosition(), followData.FollowMoveSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, ShipCameraPoint.GetRotation(), followData.FollowRotationSpeed * Time.deltaTime);
+        }
     }
 }
