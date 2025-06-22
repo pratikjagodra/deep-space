@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3004aab57d27b43aaf3435d29a43c3, type: 3}
   m_Name: CameraFollowData
   m_EditorClassIdentifier: 
-  <FollowMoveSpeed>k__BackingField: 4
-  <FollowRotationSpeed>k__BackingField: 4
-  <MaxOffset>k__BackingField: 1
+  followMoveSpeed: 4
+  followRotationSpeed: 4
+  maxOffset: 1

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111123966589673349}
   - component: {fileID: 1349039876390821990}
+  - component: {fileID: 3906773835557677610}
   m_Layer: 5
   m_Name: FPS Counter
   m_TagString: Untagged
@@ -51,15 +52,30 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_TargetDisplay: 0
+--- !u!114 &3906773835557677610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111123966589673350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c42ef814a460124fb3b898796fcd6e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 8990485115585639859}
+  isStackable: 0
+  fpsText: {fileID: 111123967244685885}
 --- !u!1 &111123967244685887
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +87,6 @@ GameObject:
   - component: {fileID: 111123967244685886}
   - component: {fileID: 111123967244685884}
   - component: {fileID: 111123967244685885}
-  - component: {fileID: 684531346246208864}
   m_Layer: 5
   m_Name: FPS Text
   m_TagString: Untagged
@@ -197,19 +212,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &684531346246208864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111123967244685887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c42ef814a460124fb3b898796fcd6e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpsText: {fileID: 111123967244685885}
 --- !u!1 &8990485115585639859
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +223,7 @@ GameObject:
   - component: {fileID: 3567249426353607836}
   - component: {fileID: 1058148035103970775}
   m_Layer: 5
-  m_Name: SafeArea
+  m_Name: SafeAreaRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

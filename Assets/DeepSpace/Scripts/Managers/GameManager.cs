@@ -1,26 +1,28 @@
 using System;
-using DeepSpace.Utils;
-using UnityEngine;
+using DeepSpace.UI;
+using EasyHelpers.Runtime.Common;
+using EasyHelpers.Runtime.Tools.ScreenService;
 
 namespace DeepSpace.Managers
 {
-    public class GameManager : Singleton<GameManager>
+    public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         internal static Action OnGameStart;
         internal static Action OnGameEnd;
 
-        private void Start()
+        protected override void Awake()
         {
-            StartGame();
+            base.Awake();
+            SetFPS.Set(60);
         }
 
-        [ContextMenu(nameof(StartGame))]
         internal void StartGame()
         {
+            ScreenService.Instance.HideScreen<MainMenuScreen>();
+            ScreenService.Instance.ShowScreen<ShipInputScreen>();
             OnGameStart?.Invoke();
         }
 
-        [ContextMenu(nameof(EndGame))]
         internal void EndGame()
         {
             OnGameEnd?.Invoke();

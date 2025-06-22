@@ -5,10 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/0_Scenes/GamePlay.unity
-    guid: 72c46fbbdec1c804d88617f29b25b95a
+  - enabled: 1
+    path: Assets/DeepSpace/Scenes/GamePlay.unity
+    guid: 5b8b21e863fab9d42b9e8d2ad2e6b139
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f4b449e562c38d142adfb4e810dd8c43,
       type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d9cb258ad98838a4eb2d6a7e971cb1e1,
+      type: 3}
   m_UseUCBPForAssetBundles: 0

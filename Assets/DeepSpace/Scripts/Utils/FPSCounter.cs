@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DeepSpace.UI;
 
-public class FPSCounter : MonoBehaviour
+namespace DeepSpace.Utils
 {
-    [SerializeField] private TMP_Text fpsText;
-
-    private int fps = 0;
-    private float time = 0f;
-
-    void Update()
+    public class FPSCounter : CanvasUIScreen
     {
-        if(time < 1)
+        [SerializeField] private TMP_Text fpsText;
+
+        private int fps = 0;
+        private float time = 0f;
+
+        private void Update()
         {
-            time += Time.deltaTime;
-            fps += 1;
-        }
-        else
-        {
-            fpsText.text = fps.ToString();
-            fps = 0;
-            time = 0f;
+            if (time < 1)
+            {
+                time += Time.deltaTime;
+                fps += 1;
+            }
+            else
+            {
+                fpsText.text = fps.ToString();
+                fps = 0;
+                time = 0f;
+            }
         }
     }
 }
